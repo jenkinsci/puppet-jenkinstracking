@@ -1,4 +1,4 @@
-puppet-jenkinstracking
+Puppet Jenkins tracking module
 ======================
 
 Jenkins has this concept of "artifact fingerprinting" where a build might say "archive foo.war as an artifact" and "keep fingerprints of my build artifacts".
