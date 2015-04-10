@@ -8,7 +8,7 @@ Puppet::Reports.register_report(:jenkinstracking) do
 Submits the execution record to Jenkins for its deployment notification plugin.
   DESC
 
-  def process
+  def send_report(report)
     url = URI.parse(Puppet[:reporturl])
     headers = { "Content-Type" => "application/x-yaml" }
     options = {}
@@ -29,9 +29,16 @@ Submits the execution record to Jenkins for its deployment notification plugin.
     end
     
     # post the actual payload
-    response = conn.post(suffix(url.path,"puppet/report"), self.to_yaml, headers)
+    response = conn.post(suffix(url.path,"puppet/report"), report, headers)
     unless response.kind_of?(Net::HTTPSuccess)
       Puppet.err "Unable to submit report to #{Puppet[:reporturl].to_s} [#{response.code}] #{response.msg}"
+    end
+  end
+
+  def process
+    #we only care about sending reports that contain the track resource
+    if self.resource_statuses.include?("Track")
+      send_report(self.to_yaml)
     end
   end
 
