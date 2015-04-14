@@ -37,7 +37,7 @@ Submits the execution record to Jenkins for its deployment notification plugin.
 
   def process
     #we only care about sending reports that contain the track resource
-    if self.resource_statuses.include?("Track")
+    if self.resource_statuses.any? { |resource| /^\[\"Track\[/ =~ resource.to_s }
       send_report(self.to_yaml)
     end
   end
