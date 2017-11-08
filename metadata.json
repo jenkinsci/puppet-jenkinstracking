@@ -1,0 +1,27 @@
+{
+  "name": "wkimball-jenkinstracking",
+  "version": "0.1.0",
+  "author": "",
+  "license": "Apache v2",
+  "summary": "Manages jenkinstracking",
+  "source": "https://github.com/wwkimball/puppet-jenkinstracking",
+  "project_page": "https://bitbucket.org/kimballstuff/jenkinstracking",
+  "dependencies": [],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": ["7"]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": ["7"]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">4"
+    }
+  ],
+  "tags": []
+}
