@@ -1,0 +1,9 @@
+---
+################################################################################
+# Default settings for FreeBSD distributions.  These settings join with and
+# override those specified within all.yaml.
+################################################################################
+jenkinstracking::puppetserver_conf_file: /usr/local/etc/puppetlabs/puppetserver/conf.d/puppetserver.conf
+jenkinstracking::puppet_agent_conf_file: /usr/local/etc/puppetlabs/puppet/puppet.conf
+
+# vim: syntax=yaml:tabstop=2:softtabstop=2:shiftwidth=2:expandtab:ai
