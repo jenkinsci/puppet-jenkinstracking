@@ -8,7 +8,8 @@
   "project_page": "https://github.com/wwkimball/puppet-jenkinstracking",
   "dependencies": [
     { "name": "puppetlabs/stdlib", "version_requirement": "4.x" },
-    { "name": "puppetlabs/inifile", "version_requirement": "2.x" }
+    { "name": "puppetlabs/inifile", "version_requirement": "2.x" },
+    { "name": "puppetlabs/hocon", "version_requirement": "1.x" }
   ],
   "operatingsystem_support": [
     {
