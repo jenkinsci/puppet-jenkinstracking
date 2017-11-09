@@ -22,10 +22,11 @@ This module is [being considered](https://github.com/jenkinsci/puppet-jenkins/is
 
 ## Integrating the jenkinstracking Report Type
 
-This module also provides a custom report which your Puppet servers can use to publish tracking data to your Jenkins server.  Integration is very simple.  While you *could* just hand-edit your puppet.conf file to accomplish this integration and you *could* just hand-install the required set of Jenkins plug-ins, that's just not wise.  To enjoy full automation and peace-of-mind that the configuration will be -- and stay -- correct, you need only classify your Puppet server with this module and set -- at minimum -- the Puppet report submission URL for your Jenkins server.  As an added bonus, the examples that follow will also illustrate how to automatically handle installing all the required Jenkins plug-ins.
+This module also provides a custom report which your Puppet servers or stand-alone nodes can use to publish tracking data to your Jenkins server.  Integration is very simple with this modules.  You need only classify your Puppet server or stand-alone nodes with this module and set -- at minimum -- the Puppet report submission URL for your Jenkins server.
 
-**Note**:  Puppet modules and Jenkins plug-ins are changing all the time, as well as their dependencies.  The lists shown here were accurate at the time this document was authored.  Be sure to sanity-check this content if you find this to be outdated.  Even better, please open a pull-request to have this documentation updated when you find inevitable discrepancies!
+As an added bonus, the examples that follow will also illustrate how to automatically handle installing all the required plug-ins to your Jenkins server using the popular [jenkins](https://forge.puppet.com/rtyler/jenkins) module.
 
+**Note**:  Puppet modules and Jenkins plug-ins are changing all the time, as well as their dependencies.  The lists shown here were accurate at the time this document was authored.  Be sure to sanity-check this content if you find this material to be outdated.  Even better, please open a pull-request to have this documentation updated when you find inevitable discrepancies!
 
 ### The r10k Puppetfile
 
@@ -49,9 +50,9 @@ mod "wwkimball/jenkinstracking",
 
 If you are using the popular Hiera-as-ENC pattern, the following examples illustrate the least amount of configuration you'd need to achieve integration between Puppet and Jenkins for deployment artifact tracking:
 
-#### Minimum YAML configuration for your Puppet server
+#### Minimum YAML configuration for your Puppet server or Stand-Alone Nodes
 
-This example classifies your Puppet servers with the `jenkinstracking` Puppet module.  It also illustrates the least amount of configuration that is required for the Puppet servers to begin publishing tracked resources to your Jenkins server.  Of course, this class provides more configuration options but -- omitting `report_url` -- the defaults are typically enough to get going out-of-the-box.
+This example classifies your Puppet servers or stand-alone nodes with the `jenkinstracking` Puppet module.  It also illustrates the least amount of configuration that is required for the Puppet servers to begin publishing tracked resources to your Jenkins server.  Of course, this class provides more configuration options but -- omitting `report_url` -- the defaults are typically sufficient for everything to work out-of-the-box.
 
 ```
 ---
@@ -82,7 +83,7 @@ jenkins::plugin_hash:
   'apache-httpcomponents-client-4-api': {}
   'cloudbees-folder': {}
   'config-file-provider': {}
-  'credentials': {}
+  #'credentials': {}                    # Already in $::jenkins::default_plugins
   'display-url-api': {}
   'javadoc': {}
   'job-dsl': {}
@@ -99,7 +100,7 @@ jenkins::plugin_hash:
   'script-security': {}
   'ssh-credentials': {}
   'ssh-slaves': {}
-  'structs': {}
+  #'structs': {}                        # Already in $::jenkins::default_plugins
   'token-macro': {}
   'vsphere-cloud': {}
   'workflow-api': {}
@@ -108,3 +109,5 @@ jenkins::plugin_hash:
   'workflow-step-api': {}
   'workflow-support': {}
 ```
+
+Once your Jenkins server is built up or updated, you will need to add your report_user (or whatever name you assign to it).  Unless you are using Anonymous access for report publication, this user account is needed by your Puppet server or stand-alone nodes in order to publish their tracking reports to Jenkins.  Be sure to assign [sufficient rights](https://wiki.jenkins.io/display/JENKINS/Puppet+Plugin) to the user so that it can perform its work.

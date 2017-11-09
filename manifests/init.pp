@@ -1,5 +1,5 @@
 # Manage the installation of the jenkinstracking report processor on the Puppet
-# server.
+# server or stand-alone nodes.
 #
 # @param manage_report_processor Indicates whether to manage the reports key of
 #  the puppet.conf file on this node.  When `false`, the setting will neither be
