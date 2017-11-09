@@ -2,11 +2,27 @@
 ################################################################################
 # Default settings for all deployment scenarios.
 ################################################################################
+
+# Indicate whether this node is stand-alone (AKA master-less).
+jenkinstracking::stand_alone: false
+
+# Indicate whether to manage the various aspects of Puppet's configuration.
+jenkinstracking::manage_puppetserver_lib_path: true
+jenkinstracking::manage_puppetserver_service: true
 jenkinstracking::manage_report_processor: true
 jenkinstracking::manage_report_url: true
-jenkinstracking::puppet_conf_file: /etc/puppetlabs/puppet/puppet.conf
+
+# Indicate whether to add or remove the various configuration values.
+jenkinstracking::merged_lib_path_ensure: present
 jenkinstracking::report_processor_ensure: present
 jenkinstracking::report_url_ensure: present
-jenkinstracking::stand_alone: false
+
+# Supply various file-system paths.
+jenkinstracking::puppet_agent_lib_path: /opt/puppetlabs/puppet/cache/lib
+jenkinstracking::puppet_agent_conf_file: /etc/puppetlabs/puppet/puppet.conf
+jenkinstracking::puppetserver_conf_file: /etc/puppetlabs/puppetserver/conf.d/puppetserver.conf
+
+# Supply the precise name of the Puppet server's service / resource.
+jenkinstracking::puppetserver_service_name: puppetserver
 
 # vim: syntax=yaml:tabstop=2:softtabstop=2:shiftwidth=2:expandtab:ai
