@@ -1,12 +1,15 @@
 {
-  "name": "wkimball-jenkinstracking",
+  "name": "wwkimball-jenkinstracking",
   "version": "0.1.0",
-  "author": "",
+  "author": "wwkimball",
   "license": "Apache v2",
-  "summary": "Manages jenkinstracking",
+  "summary": "Manages the jenkinstracking report processor for Puppet servers",
   "source": "https://github.com/wwkimball/puppet-jenkinstracking",
-  "project_page": "https://bitbucket.org/kimballstuff/jenkinstracking",
-  "dependencies": [],
+  "project_page": "https://github.com/wwkimball/puppet-jenkinstracking",
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": "4.x" },
+    { "name": "puppetlabs/inifile", "version_requirement": "2.x" }
+  ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
@@ -18,10 +21,7 @@
     }
   ],
   "requirements": [
-    {
-      "name": "puppet",
-      "version_requirement": ">4"
-    }
+    { "name": "puppet", "version_requirement": "5.x" }
   ],
-  "tags": []
+  "tags": [ "jenkins" ]
 }
