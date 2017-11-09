@@ -22,7 +22,10 @@ This module is [being considered](https://github.com/jenkinsci/puppet-jenkins/is
 
 ## Integrating the jenkinstracking Report Type
 
-This module also provides a custom report which your Puppet servers can use to publish tracking data to your Jenkins server.  Integration is very simple.  You need only classify your Puppet server with this module and set -- at minimum -- the Puppet report submission URL for your Jenkins server.
+This module also provides a custom report which your Puppet servers can use to publish tracking data to your Jenkins server.  Integration is very simple.  While you *could* just hand-edit your puppet.conf file to accomplish this integration and you *could* just hand-install the required set of Jenkins plug-ins, that's just not wise.  To enjoy full automation and peace-of-mind that the configuration will be -- and stay -- correct, you need only classify your Puppet server with this module and set -- at minimum -- the Puppet report submission URL for your Jenkins server.  As an added bonus, the examples that follow will also illustrate how to automatically handle installing all the required Jenkins plug-ins.
+
+**Note**:  Puppet modules and Jenkins plug-ins are changing all the time, as well as their dependencies.  The lists shown here were accurate at the time this document was authored.  Be sure to sanity-check this content if you find this to be outdated.  Even better, please open a pull-request to have this documentation updated when you find inevitable discrepancies!
+
 
 ### The r10k Puppetfile
 
