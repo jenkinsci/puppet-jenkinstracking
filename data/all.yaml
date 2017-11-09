@@ -1,0 +1,12 @@
+---
+################################################################################
+# Default settings for all deployment scenarios.
+################################################################################
+jenkinstracking::manage_report_processor: true
+jenkinstracking::manage_report_url: true
+jenkinstracking::puppet_conf_file: /etc/puppetlabs/puppet/puppet.conf
+jenkinstracking::report_processor_ensure: present
+jenkinstracking::report_url_ensure: present
+jenkinstracking::stand_alone: false
+
+# vim: syntax=yaml:tabstop=2:softtabstop=2:shiftwidth=2:expandtab:ai
